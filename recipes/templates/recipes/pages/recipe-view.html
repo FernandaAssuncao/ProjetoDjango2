@@ -1,8 +1,9 @@
-{% include 'recipes/pages/base.html' %}
+{% extends 'recipes/pages/base.html' %}
+
+{% block title %} me altere {% endblock %}
 
 {% block body %}
     <div class="main-content main-content-detail container">
         {% include 'recipes/partials/recipe.html' %}
     </div>
 {% endblock %}
-
