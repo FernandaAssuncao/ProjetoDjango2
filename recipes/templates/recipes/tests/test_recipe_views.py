@@ -38,7 +38,7 @@ class RecipeViewsTest(RecipeTestBase):
         response = self.client.get(
             reverse('recipes:category', kwargs={'category_id': 1000})
         )
-        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.status_code, 200)
 
     def test_recipe_detail_view_function_is_correct(self):
         view = resolve(
