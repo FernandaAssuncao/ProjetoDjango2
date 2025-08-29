@@ -20,13 +20,12 @@ class RecipeViewsTest(RecipeTestBase):
         response = self.client.get(reverse('recipes:home'))
         self.assertIn('No recipes found here!!', response.content.decode('utf-8'))
 
-    def test_recipe_home_template_loads_recipes(self):
-        self.make_recipe()
-        response = self.client.get(reverse('recipes:home'))
+    def test_recipe_category_template_loads_recipes(self):
+        needed_title = 'The is category test'
+        self.make_recipe(title=needed_title)
+        response = self.client.get(reverse('recipes:category', args=(1,)))
         content = response.content.decode('utf-8')
-        response_context_recipes = response.context['recipes']
-        self.assertIn('Recipe Title', content)
-        self.assertEqual(len(response_context_recipes), 1)
+        self.assertIn(needed_title, content)
 
     def test_recipe_category_view_function_is_correct(self):
         view = resolve(
@@ -51,3 +50,13 @@ class RecipeViewsTest(RecipeTestBase):
             reverse('recipes:recipe', kwargs={'id': 1})
         )
         self.assertEqual(response.status_code, 200)
+
+    def test_recipe_detail_template_loads_the_correct_recipes(self):
+        needed_title = 'This is a detail page'
+        self.make_recipe(title=needed_title)
+        response = self.client.get(reverse('recipes:recipe',
+                                           kwargs={
+                                               'id': 1
+                                           }))
+        content = response.content.decode('utf-8')
+        self.assertIn(needed_title, content)
