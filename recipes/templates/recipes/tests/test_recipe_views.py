@@ -49,7 +49,7 @@ class RecipeViewsTest(RecipeTestBase):
         response = self.client.get(
             reverse('recipes:category', kwargs={'category_id': 1000})
         )
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 404)
 
     def test_recipe_detail_view_function_is_correct(self):
         view = resolve(
@@ -61,7 +61,7 @@ class RecipeViewsTest(RecipeTestBase):
         response = self.client.get(
             reverse('recipes:recipe', kwargs={'id': 1})
         )
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 404)
 
     def test_recipe_detail_template_loads_the_correct_recipes(self):
         needed_title = 'This is a detail page'
