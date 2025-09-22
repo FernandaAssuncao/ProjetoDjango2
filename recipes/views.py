@@ -26,3 +26,7 @@ def recipe(request, id):
         'recipe': recipe,
         'is_detail_page': True,
     })
+
+
+def search(request):
+    ...
