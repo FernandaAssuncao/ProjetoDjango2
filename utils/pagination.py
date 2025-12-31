@@ -3,9 +3,9 @@ import math
 
 def make_pagination_range(
         page_range, # sabe quantas receitas vai existir
-        qyt_pages, # quantidade de paginas a serem mostradas
+        qty_pages, # quantidade de paginas a serem mostradas
         current_page): # pagina que o usuario esta
-    middle_range = math.ceil(qyt_pages / 2) # quantas paginas vao ficar antes e depois da que o usuario esta
+    middle_range = math.ceil(qty_pages / 2) # quantas paginas vao ficar antes e depois da que o usuario esta
     start_range = current_page - middle_range
     stop_range = current_page + middle_range
     total_pages = len(page_range)
@@ -23,7 +23,7 @@ def make_pagination_range(
     return {
         'pagination': pagination,
         'page_range': page_range,
-        'qty_pages': qyt_pages,
+        'qty_pages': qty_pages,
         'current_page': current_page,
         'total_pages': total_pages,
         'start_range': start_range,

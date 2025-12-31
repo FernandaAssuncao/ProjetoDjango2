@@ -8,13 +8,14 @@
 
 </head>
 
-
 <body>
     {% include 'recipes/partials/header.html'%}
     {% include 'recipes/partials/search.html'%}
     <main class="main-content-container">
         {% block body %}
         {% endblock %}
+
+        {% include 'recipes/partials/pagination.html' %}
     </main>
     {% include 'recipes/partials/footer.html'%}
 </body>
